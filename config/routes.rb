@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groups
   devise_for :users, :skip => [:sessions]
 
   as :user do
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root :to => 'application#index', :as => :authenticated_root
+    root :to => 'group#index', :as => :authenticated_root
   end
   root :to => redirect('/login')
   # The priority is based upon order of creation: first created -> highest priority.
