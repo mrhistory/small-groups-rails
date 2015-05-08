@@ -1,12 +1,10 @@
 %h1 Groups List
 
-%table{:class => 'table table-hover'}
+%table{:class => 'table table-hover table-condensed'}
   %thead
     %tr
       %th Group Name
       %th Max Members
-      %th
-      %th
       %th
 
   %tbody
@@ -14,9 +12,10 @@
       %tr
         %td= group.name
         %td= group.max_members
-        %td= link_to 'Show', group, class: 'btn btn-default'
-        %td= link_to 'Edit', edit_group_path(group), class: 'btn btn-default'
-        %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+        %td{:class => 'pull-right'}
+          = link_to 'View', group, class: 'btn btn-default btn-xs'
+          = link_to '', edit_group_path(group), class: 'btn btn-default btn-xs glyphicon glyphicon-pencil'
+          = link_to '', group, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove'
 
 %br
 
