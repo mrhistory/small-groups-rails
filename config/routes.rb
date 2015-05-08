@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root :to => 'group#index', :as => :authenticated_root
+    root :to => 'groups#index', :as => :authenticated_root
   end
   root :to => redirect('/login')
+
+  resources :groups
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

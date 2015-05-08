@@ -1,8 +1,10 @@
-%h1 Listing groups
+%h1 Groups List
 
-%table
+%table{:class => 'table table-hover'}
   %thead
     %tr
+      %th Group Name
+      %th Max Members
       %th
       %th
       %th
@@ -10,10 +12,12 @@
   %tbody
     - @groups.each do |group|
       %tr
-        %td= link_to 'Show', group
-        %td= link_to 'Edit', edit_group_path(group)
-        %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= group.name
+        %td= group.max_members
+        %td= link_to 'Show', group, class: 'btn btn-default'
+        %td= link_to 'Edit', edit_group_path(group), class: 'btn btn-default'
+        %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
 
 %br
 
-= link_to 'New Group', new_group_path
+= link_to 'New Group', new_group_path, class: 'btn btn-primary'
