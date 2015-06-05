@@ -1,3 +1,5 @@
+/** @jsx React.DOM */
+
 var NavBar = React.createClass({
     propTypes: {
         userSignedIn: React.PropTypes.bool,
@@ -6,41 +8,53 @@ var NavBar = React.createClass({
         logoutLink: React.PropTypes.string,
         loginLink: React.PropTypes.string,
         signUpLink: React.PropTypes.string
-    }
+    },
 
     render: function() {
-        return (
-            <div class="row">
-                <nav class="navbar navbar-default">
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="#">Small Groups App</a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="navbar-collapse">
-                        
-                            if (this.props.user_signed_in) {
-                                <ul class="nav navbar-nav">
-                                    this.props.links.map(function(link) {
-                                        <li><a href={link[1]}>{link[0]}</li>
-                                    })
-                                </ul>
-                            }
+        var signedInLinks;
+        if (this.props.userSignedIn) {
+            signedInLinks = React.DOM.ul(null,
+                this.props.links.map(function(link) {
+                    return React.DOM.li(null,
+                            React.DOM.a({href: link.path}, link.name)
+                        )
+                })
+            );
+        }
 
-                            <ul class="nav navbar-nav navbar-right">
-                                if (this.props.user_signed_in) {
-                                    <li><a href={this.props.my_account_link}>My Account</a></li>
-                                    <li><a href={this.props.logout_link} method="delete">Logout</a></li>
-                                } else {
-                                    <li><a href={this.props.login_link}>Login</a></li>
-                                    <li><a href={this.props.sign_up_link}></a></li>
-                                }
-                            </ul>
+        var rightLinks;
+        if (this.props.userSignedIn) {
+            rightLinks = React.DOM.ul({className: "nav nav-bar navbar-right"},
+                    React.DOM.li(null,
+                        React.DOM.a({href: this.props.myAccountLink}, "My Account")),
+                    React.DOM.li(null,
+                        React.DOM.a({href: this.props.logoutLink, method: 'delete'}, "Logout"))
+                );
+        } else {
+            rightLinks = React.DOM.ul({className: "nav navbar-nav navbar-right"},
+                    React.DOM.li(null,
+                        React.DOM.a({href: this.props.loginLink}, "Login")),
+                    React.DOM.li(null,
+                        React.DOM.a({href: this.props.signUpLink}, "Sign Up"))
+                );
+        }
+
+        return (
+            <div className="row">
+                <nav className="navbar navbar-default">
+                    <div className="col-md-10 col-md-offset-1">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <a className="navbar-brand" href="#">Small Groups App</a>
+                        </div>
+                        <div className="collapse navbar-collapse" id="navbar-collapse">
+                            {signedInLinks}
+                            {rightLinks}
                         </div>
                     </div>
                 </nav>
