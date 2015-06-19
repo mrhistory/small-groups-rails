@@ -1,22 +1,20 @@
-%h1 Groups List
-
-%table{:class => 'table table-hover table-condensed'}
-  %thead
-    %tr
-      %th Group Name
-      %th Max Members
-      %th
-
-  %tbody
+.row
+  .col-md-6.col-md-offset-3
+    %h1 Groups
     - @groups.each do |group|
-      %tr
-        %td= group.name
-        %td= group.max_members
-        %td{:class => 'pull-right'}
-          = link_to 'View', group, class: 'btn btn-default btn-xs'
+      .well
+        %div{:class => 'pull-right'}
           = link_to '', edit_group_path(group), class: 'btn btn-default btn-xs glyphicon glyphicon-pencil'
           = link_to '', group, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-remove'
+        %div
+          %a{:href => group_path(group)}
+            %h3= group.name
+            %p= group.summary
+            %p
+              Max Members:
+              = group.max_members.to_s
+              %br
+              Openings:
+              = (group.max_members - group.users.size).to_s
 
-%br
-
-= link_to 'New Group', new_group_path, class: 'btn btn-primary'
+    = link_to 'New Group', new_group_path, class: 'btn btn-primary'

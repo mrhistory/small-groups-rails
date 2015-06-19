@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=US-ASCII", "http-equiv" => "Content-Type"}/
-    %title Small Groups App
+    %title Small Groups
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -17,7 +17,7 @@
                 %span{:class => 'icon-bar'}
                 %span{:class => 'icon-bar'}
                 %span{:class => 'icon-bar'}
-              %a{:class => 'navbar-brand', :href => '#'} Small Groups App
+              %a{:class => 'navbar-brand', :href => '#'} Small Groups
             .collapse.navbar-collapse{:id => 'navbar-collapse'}
               - if user_signed_in?
                 %ul{:class => 'nav navbar-nav'}
