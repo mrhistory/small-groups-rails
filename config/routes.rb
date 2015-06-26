@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   root :to => redirect('/login')
 
   resources :groups
+
+  post "group_leadership" => "group_leadership#create"
+  put "group_leadership/:id" => "group_leadership#update"
+  delete "group_leadership/:id" => "group_leadership#destroy"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

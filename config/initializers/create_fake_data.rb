@@ -29,11 +29,12 @@ end
 
 def add_group_leaders_to_groups
   GroupLeadership.create!({user: User.find(2), group: Group.find(1)})
-  GroupLeadership.create!({user: User.find(3), group: Group.find(2)})
+  GroupLeadership.create!({user: User.find(3), group: Group.find(1)})
+  GroupLeadership.create!({user: User.find(4), group: Group.find(2)})
   GroupLeadership.create!({user: User.find(2), group: Group.find(3)})
 end
 
-if (Rails.env.development? || Rails.env.test?) && (!User.table_exists? || User.all.empty?)
+if (Rails.env.development? || Rails.env.test?) && User.table_exists? && User.all.empty?
   create_users
   puts 'Users added.'
   create_groups

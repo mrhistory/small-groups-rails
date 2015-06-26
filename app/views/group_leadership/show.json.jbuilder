@@ -1,0 +1,1 @@
+json.extract! @group_leadership, :id, :created_at, :updated_at

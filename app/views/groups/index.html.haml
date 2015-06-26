@@ -15,6 +15,6 @@
               = group.max_members.to_s
               %br
               Openings:
-              = (group.max_members - group.users.size).to_s
+              = (group.max_members - group.group_memberships.size).to_s
 
     = link_to 'New Group', new_group_path, class: 'btn btn-primary'
