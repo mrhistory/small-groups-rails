@@ -6,10 +6,5 @@ class CreateGroups < ActiveRecord::Migration
       t.integer :max_members
       t.timestamps null: false
     end
-
-    create_table :groups_users do |t|
-      t.belongs_to :group, index: true
-      t.belongs_to :user, index: true
-    end
   end
 end

@@ -11,6 +11,25 @@
       %label= 'Max Members'
       %br
       %p{:class => 'form-control-static'}= @group.max_members
+    .form-group
+      %label= 'Openings'
+      %br
+      %p{:class => 'form-control-static'}= (@group.max_members - @group.group_memberships.size).to_s
+  .col-md-6
+    .form-group
+      %label= 'Group Leaders'
+      %br
+      %p{:class => 'form-control-static'}
+        -@group.group_leaderships.each do |leader|
+          = leader.user.first_name + ' ' + leader.user.last_name
+          %br
+    .form-group
+      %label= 'Group Members'
+      %br
+      %p{:class => 'form-control-static'}
+        -@group.group_memberships.each do |member|
+          = member.user.first_name + ' ' + member.user.last_name
+          %br
 
 = link_to 'Edit', edit_group_path(@group), class: 'btn btn-primary'
 = link_to 'Back', groups_path, class: 'btn btn-default'
