@@ -12,6 +12,8 @@ gem 'haml', '~> 4.0.6'
 gem 'haml-rails', '~> 0.9'
 gem 'devise'
 gem 'bower-rails'
+gem 'angular-rails-templates', '~> 0.2.0'
+gem 'foreman'
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
@@ -31,3 +33,8 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
+group :production, :staging do
+  gem 'rails_12factor'
+  gem 'rails_stdout_logging'
+  gem 'rails_serve_static_assets'
+end

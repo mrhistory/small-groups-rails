@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
-  resources :groups
-  devise_for :users, :skip => [:sessions], :controllers => { registrations: 'registrations' }
+  root 'home#index'
 
-  as :user do
-    get "/login" => "devise/sessions#new", :as => :new_user_session
-    post "/login" => "devise/sessions#create", :as => :user_session
-    delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
-  end
+  # resources :groups
+  # devise_for :users, :skip => [:sessions], :controllers => { registrations: 'registrations' }
 
-  authenticated :user do
-    root :to => 'groups#index', :as => :authenticated_root
-  end
-  root :to => redirect('/login')
+  # as :user do
+  #   get "/login" => "devise/sessions#new", :as => :new_user_session
+  #   post "/login" => "devise/sessions#create", :as => :user_session
+  #   delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
+  # end
 
-  resources :groups
+  # authenticated :user do
+  #   root :to => 'groups#index', :as => :authenticated_root
+  # end
+  # root :to => redirect('/login')
 
-  post "group_leadership" => "group_leadership#create"
-  put "group_leadership/:id" => "group_leadership#update"
-  delete "group_leadership/:id" => "group_leadership#destroy"
+  # resources :groups
+
+  # post "group_leadership" => "group_leadership#create"
+  # put "group_leadership/:id" => "group_leadership#update"
+  # delete "group_leadership/:id" => "group_leadership#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
