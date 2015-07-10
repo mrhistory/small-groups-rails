@@ -1,4 +1,2 @@
-json.array!(@groups) do |group|
-  json.extract! group, :id
-  json.url group_url(group, format: :json)
-end
+json.key_format! camelize: :lower
+json.array! @groups, :id, :name, :summary, :max_members, :current_members

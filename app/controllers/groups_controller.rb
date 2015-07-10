@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -58,6 +59,12 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully deleted.' }
       format.json { head :no_content }
+    end
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do
+    respond_to do |type|
+      type.all { render :nothing => true, :status => 404 }
     end
   end
 

@@ -1,3 +1,7 @@
 %div{:'ng-app' => 'smallGroups'}
   .view-container
+    %div{:'ng-include' => "'partials/navbar.html'"}
+    .flash.row
+      .col-md-6.col-md-offset-3{:'flash-alert' => true, :duration => '0', :'active-class' => 'alert'}
+        {{flash.message}}
     .view-frame.animate-view{:'ng-view' => true}

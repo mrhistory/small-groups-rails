@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  resources :groups, only: [:index, :show]
+
   # resources :groups
   # devise_for :users, :skip => [:sessions], :controllers => { registrations: 'registrations' }
 
