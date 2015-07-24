@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  namespace :api do
+    resources :groups, only: [:index, :show]
+  end
+  root 'application#index'
 
-  resources :groups, only: [:index, :show]
+  get '/b/' => 'application#index'
+  get '*path' => redirect('/b/#/%{path}')
 
   # resources :groups
   # devise_for :users, :skip => [:sessions], :controllers => { registrations: 'registrations' }
