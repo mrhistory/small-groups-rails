@@ -1,4 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+    clear_respond_to
+    respond_to :json
+
     private
 
     def sign_up_params

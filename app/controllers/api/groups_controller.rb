@@ -1,5 +1,5 @@
 class Api::GroupsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  before_action :login_required
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups

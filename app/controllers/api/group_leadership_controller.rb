@@ -1,4 +1,5 @@
 class Api::GroupLeadershipController < ApplicationController
+  before_action :login_required
   before_action :set_group_leadership, only: [:update, :destroy]
 
   # POST /group_leadership.json

@@ -1,4 +1,4 @@
-<div ng-app="smallGroups">
+<div ng-app="smallGroups" ng-controller="ApplicationController">
   <div class="view-container">
     <div ng-include="'partials/navbar.html'"></div>
     <div class="flash row">
@@ -6,6 +6,7 @@
         {{flash.message}}
       </div>
     </div>
-    <div class="view-frame animate-view" ng-view="true"></div>
+    <div class="view-frame" ng-view="true"></div>
   </div>
 </div>
+<div login-dialog ng-if="!isLoginPage"></div>
